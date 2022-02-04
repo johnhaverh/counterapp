@@ -9,6 +9,19 @@ class CounterPage extends StatefulWidget {
 class _CounterPageState extends State<CounterPage> {
   
   int counter=0;
+
+  void increase(){
+    counter++;
+    setState(() {});
+  }
+  void decrease(){
+    counter--;
+    setState(() {});
+  }
+  void reset(){
+    counter=0;
+    setState(() {});
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -30,35 +43,44 @@ class _CounterPageState extends State<CounterPage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      floatingActionButton: CustomFloatingActions(increaseFn: increase, decreaseFn: decrease, resetFn: reset,),
+    );
+  }
+}
+
+class CustomFloatingActions extends StatelessWidget {
+
+  final Function increaseFn;
+  final Function decreaseFn;
+  final Function resetFn;
+
+  const CustomFloatingActions({
+    Key key, @required this.increaseFn, this.decreaseFn, this.resetFn,}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      
+      children: [
+        FloatingActionButton(
+          child: const Icon(Icons.exposure_minus_1_outlined),
+          // onPressed: ()  =>  setState(() => counter--),
+          onPressed: () => decreaseFn(),
+        ),
         
-        children: [
-          FloatingActionButton(
-            child: const Icon(Icons.exposure_minus_1_outlined),
-            onPressed: () {
-              counter--;        
-              setState(() {});
-            },
-          ),
-          //const SizedBox(width: 20),
-          FloatingActionButton(
-            child: const Icon(Icons.auto_delete), 
-            onPressed: () {
-              counter=0;        
-              setState(() {});
-            },
-          ),
-          //const SizedBox(width:20),
-          FloatingActionButton(
-            child: const Icon(Icons.exposure_plus_1_outlined),
-            onPressed: () {
-              counter++;        
-              setState(() {});
-            },
-          ),
-        ],
-      ),
+        FloatingActionButton(
+          child: const Icon(Icons.auto_delete), 
+        //  onPressed: () =>  setState(() => counter=0),
+          onPressed: () => resetFn(),
+        ),
+        
+        FloatingActionButton(
+          child: const Icon(Icons.exposure_plus_1_outlined),
+          // onPressed: () =>  setState(() => counter++),
+          onPressed: () => increaseFn(),
+        ),
+      ],
     );
   }
 }
