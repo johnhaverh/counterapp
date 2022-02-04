@@ -6,6 +6,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    const fonsSize30 = TextStyle(fontSize: 30);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("HomePage"),
@@ -16,8 +19,8 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center, //alinear vertical
           //crossAxisAlignment: CrossAxisAlignment.center, //alinear horizontal
           children: const [
-            Text('Clicks Counter'),
-            Text('0'),
+            Text('Clicks Counter',style: fonsSize30,),
+            Text('0',style: fonsSize30,),
           ],
         ),
       ),
