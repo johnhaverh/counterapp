@@ -31,7 +31,8 @@ class _CounterPageState extends State<CounterPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        
         children: [
           FloatingActionButton(
             child: const Icon(Icons.exposure_minus_1_outlined),
@@ -40,7 +41,7 @@ class _CounterPageState extends State<CounterPage> {
               setState(() {});
             },
           ),
-          const SizedBox(width: 20),
+          //const SizedBox(width: 20),
           FloatingActionButton(
             child: const Icon(Icons.auto_delete), 
             onPressed: () {
@@ -48,7 +49,7 @@ class _CounterPageState extends State<CounterPage> {
               setState(() {});
             },
           ),
-          const SizedBox(width:20),
+          //const SizedBox(width:20),
           FloatingActionButton(
             child: const Icon(Icons.exposure_plus_1_outlined),
             onPressed: () {
