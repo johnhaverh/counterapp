@@ -29,12 +29,34 @@ class _CounterPageState extends State<CounterPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          counter++;        
-          setState(() {});
-        },
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.exposure_minus_1_outlined),
+            onPressed: () {
+              counter--;        
+              setState(() {});
+            },
+          ),
+          const SizedBox(width: 20),
+          FloatingActionButton(
+            child: const Icon(Icons.auto_delete), 
+            onPressed: () {
+              counter=0;        
+              setState(() {});
+            },
+          ),
+          const SizedBox(width:20),
+          FloatingActionButton(
+            child: const Icon(Icons.exposure_plus_1_outlined),
+            onPressed: () {
+              counter++;        
+              setState(() {});
+            },
+          ),
+        ],
       ),
     );
   }
